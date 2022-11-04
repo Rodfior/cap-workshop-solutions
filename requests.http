@@ -17,4 +17,15 @@ Content-Type: application/json
   "ID": 200,
   "name": "William Shakespeare",
   "dateOfBirth": "1564-04-26"
-}
+}}
+
+
+### Get total stock
+GET {{server}}/catalog/totalStock()
+
+
+### Submit an order
+POST {{server}}/catalog/submitOrder
+Content-Type: application/json
+
+{ "book":207, "quantity":4 }

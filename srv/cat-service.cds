@@ -10,4 +10,10 @@ service CatalogService {
         author.name as author_name
     };
 
+    function totalStock() returns Integer;
+
+    action submitOrder(book : Books:ID, quantity : Integer) returns {
+        stock : Integer
+    };
+
 }
