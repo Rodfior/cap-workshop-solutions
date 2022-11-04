@@ -2,7 +2,6 @@ using my.bookshop as my from '../db/data-model';
 
 service CatalogService {
 
-    @readonly
     entity Authors as projection on my.Authors;
 
     @readonly
