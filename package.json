@@ -11,10 +11,12 @@
     "hdb": "^0.19.0"
   },
   "devDependencies": {
+    "@sap/ux-specification": "^1.102.11",
     "sqlite3": "^5"
   },
   "scripts": {
-    "start": "cds run"
+    "start": "cds run",
+    "watch-mybookshop_ui": "cds watch --open mybookshop_ui/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "engines": {
     "node": "^16.15"
@@ -53,5 +55,8 @@
         }
       }
     }
-  }
+  },
+  "sapux": [
+    "app/mybookshop_ui"
+  ]
 }
