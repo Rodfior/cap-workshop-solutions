@@ -1,62 +1,69 @@
 {
-  "name": "mybookshop",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
-  "license": "UNLICENSED",
-  "private": true,
-  "dependencies": {
-    "@sap/cds": "^6",
-    "express": "^4",
-    "hdb": "^0.19.0"
-  },
-  "devDependencies": {
-    "@sap/ux-specification": "^1.102.11",
-    "sqlite3": "^5"
-  },
-  "scripts": {
-    "start": "cds run",
-    "watch-mybookshop_ui": "cds watch --open mybookshop_ui/webapp/index.html?sap-ui-xx-viewCache=false"
-  },
-  "engines": {
-    "node": "^16.15"
-  },
-  "eslintConfig": {
-    "extends": "eslint:recommended",
-    "env": {
-      "es2020": true,
-      "node": true,
-      "jest": true,
-      "mocha": true
+    "name": "mybookshop",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/cds": "^6",
+        "express": "^4",
+        "hdb": "^0.19.0"
     },
-    "globals": {
-      "SELECT": true,
-      "INSERT": true,
-      "UPDATE": true,
-      "DELETE": true,
-      "CREATE": true,
-      "DROP": true,
-      "CDL": true,
-      "CQL": true,
-      "CXL": true,
-      "cds": true
+    "devDependencies": {
+        "@sap/ux-specification": "^1.102.11",
+        "sqlite3": "^5"
     },
-    "rules": {
-      "no-console": "off",
-      "require-atomic-updates": "off"
-    }
-  },
-  "cds": {
-    "requires": {
-      "db": {
-        "kind": "hana-cloud",
-        "credentials": {
-          "database": "my.db"
+    "scripts": {
+        "start": "cds run",
+        "watch-mybookshop_ui": "cds watch --open mybookshop_ui/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-deployed_ui": "cds watch --open deployed_ui/webapp/index.html#fe-lrop-v4",
+        "undeploy": "cf undeploy mybookshop --delete-services --delete-service-keys"
+    },
+    "engines": {
+      "node": "^16.15"
+    },
+    "eslintConfig": {
+        "extends": "eslint:recommended",
+        "env": {
+            "es2020": true,
+            "node": true,
+            "jest": true,
+            "mocha": true
+        },
+        "globals": {
+            "SELECT": true,
+            "INSERT": true,
+            "UPDATE": true,
+            "DELETE": true,
+            "CREATE": true,
+            "DROP": true,
+            "CDL": true,
+            "CQL": true,
+            "CXL": true,
+            "cds": true
+        },
+        "rules": {
+            "no-console": "off",
+            "require-atomic-updates": "off"
         }
-      }
-    }
-  },
-  "sapux": [
-    "app/mybookshop_ui"
-  ]
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "hana-cloud",
+                "credentials": {
+                    "database": "my.db"
+                }
+            },
+            "uaa": {
+                "kind": "xsuaa",
+                "credentials": {}
+            }
+        }
+    },
+    "sapux": [
+        "app/mybookshop_ui",
+        "app/deployed_ui"
+    ]
 }
