@@ -26,7 +26,7 @@ annotate CatalogService.Books with @(UI : {
     ],
     Facets           : [{
         $Type  : 'UI.ReferenceFacet',
-        Label  : 'Book details',
+        Label  : '{i18n>Book_details}',
         Target : '@UI.FieldGroup#Main'
     }],
     FieldGroup #Main : {Data : [
@@ -40,10 +40,10 @@ annotate CatalogService.Books with @(UI : {
 });
 
 annotate CatalogService.Books with {
-    ID          @(Common.Label : 'Book ID');
-    author_name @(Common.Label : 'Author');
-    title       @(Common.Label : 'Title');
-    stock       @(Common.Label : 'Stock');
-    price       @(Common.Label : 'Price');
-    createdBy   @(Common.Label : 'Entry creator');
+    ID          @(Common.Label : '{i18n>Book_ID}');
+    author_name @(Common.Label : '{i18n>Author}');
+    title       @(Common.Label : '{i18n>Title}');
+    stock       @(Common.Label : '{i18n>Stock}');
+    price       @(Common.Label : '{i18n>Price}');
+    createdBy   @(Common.Label : '{i18n>Entry_creator}');
 }
