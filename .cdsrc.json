@@ -1,1 +1,31 @@
-{}
+{
+    "[development]": {
+        "auth": {
+            "passport": {
+                "strategy": "mock",
+                "users": {
+                    "admin": {
+                        "password": "initial",
+                        "ID": "admin",
+                        "roles": [
+                            "Admin"
+                        ],
+                        "userAttributes": {
+                            "country": "UK"
+                        }
+                    },
+                    "normal": {
+                        "password": "initial",
+                        "ID": "normal",
+                        "roles": [
+                            "authenticated-user"
+                        ],
+                        "userAttributes": {
+                            "country": "UK"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
