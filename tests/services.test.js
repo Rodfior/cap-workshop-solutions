@@ -41,6 +41,6 @@ describe('My Bookstore - Consuming Services locally', () => {
         const stockValues = (await CatalogService.read('Books')).map(entry => entry.stock)
         let totalStock = 0
         for (const stock of stockValues) totalStock += stock
-        expect(calculatedTotalStock).to.eql(totalStock)
+        expect(calculatedTotalStock[0].stock).to.eql(totalStock)
     })
 })
