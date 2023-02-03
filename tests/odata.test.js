@@ -46,7 +46,7 @@ describe('My Bookstore APIs', () => {
     })
 
     it('correctly sums up totalStock', async () => {
-        const calculatedTotalStock = (await GET`/catalog/totalStock()`).data.value
+        const calculatedTotalStock = (await GET`/catalog/totalStock()`).data.value.stock
         const stockValues = (await GET`/catalog/Books`).data.value.map(book => book.stock)
 
         let totalStock = 0
