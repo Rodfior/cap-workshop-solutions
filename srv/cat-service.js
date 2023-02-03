@@ -16,14 +16,8 @@ class CatalogService extends cds.ApplicationService {
         })
 
         this.on('totalStock', async () => {
-            const query = SELECT`stock`.from(Books)
-            const results = await cds.run(query)
-
-            let sum = 0
-            for (const result of results) {
-                sum += result.stock
-            }
-            return sum
+            const query = SELECT`SUM(stock) as stock`.from(Books)
+            return await cds.run(query)
         })
 
         this.on('submitOrder', async req => {
