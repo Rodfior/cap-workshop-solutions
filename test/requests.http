@@ -9,10 +9,9 @@ GET {{server}}/catalog/Books
 GET {{server}}/catalog/Authors
 
 
-### Create new author with admin user (UK)
+### Create new author
 POST {{server}}/catalog/Authors
 Content-Type: application/json
-Authorization: Basic YWRtaW46aW5pdGlhbA==
 
 {
   "ID": 12333,
@@ -31,17 +30,3 @@ POST {{server}}/catalog/submitOrder
 Content-Type: application/json
 
 { "book":207, "quantity":4 }
-
-
-### Create new book as normal user (UK) ---> result should be forbidden
-POST {{server}}/catalog/Books
-Content-Type: application/json
-Authorization: Basic bm9ybWFsOmluaXRpYWw=
-
-{
-  "ID": 299,
-  "title": "The Fall of the House of Ushe",
-  "author_ID": 150,
-  "stock":67,
-  "price": 19.19
-}

@@ -1,30 +1,11 @@
 using my.bookshop as my from '../db/data-model';
 using { API_BUSINESS_PARTNER as external_BP } from './external/API_BUSINESS_PARTNER';
 
-service CatalogService @(requires : 'authenticated-user') {
+service CatalogService {
 
-    entity Authors @(restrict : [
-        {
-            grant : ['READ'],
-            to    : ['authenticated-user'],
-            where : 'nationality = $user.country'
-        },
-        {
-            grant : ['*'],
-            to    : ['Admin']
-        }
-    ]) as projection on my.Authors;
+    entity Authors as projection on my.Authors;
 
-    entity Books @(restrict : [
-        {
-            grant : ['READ'],
-            to    : ['authenticated-user']
-        },
-        {
-            grant : ['*'],
-            to    : ['Admin']
-        }
-    ]) as projection on my.Books {
+    entity Books as projection on my.Books {
         *,
         author.name as author_name
     };
