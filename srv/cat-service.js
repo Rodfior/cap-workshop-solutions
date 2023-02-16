@@ -43,5 +43,18 @@ class CatalogService extends cds.ApplicationService {
         await super.init()
     }
 }
-
-module.exports = CatalogService
+class ExternalService extends cds.ApplicationService {
+    async init() {
+        const { API_BP } = this.entities
+        const headers = {
+            'apikey': '<put your API Key here>'
+        }
+        const bupaSrvAPI = await cds.connect.to('API_BUSINESS_PARTNER')
+        this.on('READ', API_BP, async (req) => {
+            console.log('getting data from API Hub S/4HANA Sandbox System ')
+            const query = req.query
+            return bupaSrvAPI.send({ query, headers })
+        })
+    }
+}
+module.exports = { CatalogService, ExternalService }

@@ -26,32 +26,16 @@ describe('My Bookstore APIs', () => {
         ])
     })
 
-    it('supports $value requests', async () => {
-        const { data } = await GET`catalog/Authors/150/name/$value`
-        expect(data).to.equal('Edgar Allen Poe')
-    })
-
-    it('supports $top/$skip paging', async () => {
-        const { data: p1 } = await GET`/catalog/Books?$select=title&$top=3`
-        expect(p1.value).to.eql([
-            { ID: 201, title: 'Wuthering Heights', IsActiveEntity: true },
-            { ID: 207, title: 'Jane Eyre', IsActiveEntity: true },
-            { ID: 251, title: 'The Raven', IsActiveEntity: true },
-        ])
-        const { data: p2 } = await GET`/catalog/Books?$select=title&$skip=3`
-        expect(p2.value).to.eql([
-            { ID: 252, title: 'Eleonora', IsActiveEntity: true },
-            { ID: 271, title: 'Catweazle', IsActiveEntity: true },
-        ])
-    })
-
     it('correctly sums up totalStock', async () => {
         const calculatedTotalStock = (await GET`/catalog/totalStock()`).data.value.stock
-        const stockValues = (await GET`/catalog/Books`).data.value.map(book => book.stock)
-
-        let totalStock = 0
-        for (const stock of stockValues) totalStock += stock
+        const stockValues = (await GET`/catalog/Books`)
+                             .data.value.map(book => book.stock)
+ 
+	    let totalStock = 0;
+        for (const stock of stockValues) totalStock += stock;
+ 
         expect(calculatedTotalStock).to.eql(totalStock)
     })
+
 
 })

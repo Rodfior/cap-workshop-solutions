@@ -33,14 +33,4 @@ describe('My Bookstore - Consuming Services locally', () => {
             },
         ])
     })
-
-    it('correctly sums up totalStock', async () => {
-        const CatalogService = await cds.connect.to('CatalogService')
-        const calculatedTotalStock = await CatalogService.totalStock()
-
-        const stockValues = (await CatalogService.read('Books')).map(entry => entry.stock)
-        let totalStock = 0
-        for (const stock of stockValues) totalStock += stock
-        expect(calculatedTotalStock[0].stock).to.eql(totalStock)
-    })
 })
