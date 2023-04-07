@@ -55,8 +55,5 @@
         }
       }
     }
-  },
-  "sapux": [
-    "app/mybookshop_ui"
-  ]
+  }
 }
