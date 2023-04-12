@@ -1,10 +1,9 @@
-using CatalogService from './cat-service';
-
+using CatalogService as service from '../../srv/cat-service';
 
 annotate CatalogService.Books with @odata.draft.enabled;
 
 annotate CatalogService.Books with @(UI : {
-    HeaderInfo       : {
+    HeaderInfo      : {
         TypeName       : 'Book',
         TypeNamePlural : 'Books',
         Title          : {
@@ -12,38 +11,28 @@ annotate CatalogService.Books with @(UI : {
             Value : title
         }
     },
-    SelectionFields  : [
+    SelectionFields : [
         author_name,
         title
     ],
-    LineItem         : [
-        {Value : ID},
+    LineItem        : [
         {Value : author_name},
-        {Value : title},
-        {Value : stock},
-        {Value : price},
-        {Value : createdBy}
+        {Value : title}
     ],
-    Facets           : [{
+        Facets : [{
         $Type  : 'UI.ReferenceFacet',
         Label  : 'Book details',
         Target : '@UI.FieldGroup#Main'
     }],
     FieldGroup #Main : {Data : [
-        {Value : ID},
         {Value : author_name},
-        {Value : title},
-        {Value : stock},
-        {Value : price},
-        {Value : createdBy}
+        {Value : title}
     ]}
+
 });
 
 annotate CatalogService.Books with {
-    ID          @(Common.Label : 'Book ID');
     author_name @(Common.Label : 'Author');
     title       @(Common.Label : 'Title');
-    stock       @(Common.Label : 'Stock');
-    price       @(Common.Label : 'Price');
-    createdBy   @(Common.Label : 'Entry creator');
 }
+
